@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/widgets/meal_item.dart';
 
-class Meals extends StatelessWidget {
+class MealsScreen extends StatelessWidget {
   final String? title;
   final List<Meal> meals;
-  const Meals({super.key, this.title, required this.meals});
+  const MealsScreen({super.key, this.title, required this.meals});
 
   @override
   Widget build(BuildContext context) {

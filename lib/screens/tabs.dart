@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/screens/categories.dart';
 import 'package:meals_app/screens/meals.dart';
 
-class Tabs extends StatefulWidget {
-  const Tabs({super.key});
+class TabsScreen extends StatefulWidget {
+  const TabsScreen({super.key});
 
   @override
   State<StatefulWidget> createState() {
-    return _TabsState();
+    return _TabsScreenState();
   }
 }
 
-class _TabsState extends State<Tabs> {
+class _TabsScreenState extends State<TabsScreen> {
   int _selectPageIndex = 0;
 
   void _selectedPage(int index) {
@@ -22,11 +22,11 @@ class _TabsState extends State<Tabs> {
 
   @override
   Widget build(BuildContext context) {
-    Widget activePage = Categories();
+    Widget activePage = CategoriesScreen();
     String activePageTitle = 'Categories';
 
     if (_selectPageIndex == 1) {
-      activePage = Meals(meals: []);
+      activePage = MealsScreen(meals: []);
       activePageTitle = "Favourites";
     }
 

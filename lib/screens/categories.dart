@@ -5,8 +5,8 @@ import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/screens/meals.dart';
 import 'package:meals_app/widgets/category_item.dart';
 
-class Categories extends StatelessWidget {
-  const Categories({super.key});
+class CategoriesScreen extends StatelessWidget {
+  const CategoriesScreen({super.key});
 
   void _handleSelectCategory(BuildContext context, Category category) {
     // Navigator.push(context, route)
@@ -18,7 +18,7 @@ class Categories extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) =>
-            Meals(title: category.title, meals: filteredMeals),
+            MealsScreen(title: category.title, meals: filteredMeals),
       ),
     );
   }

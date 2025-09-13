@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/widgets/meals_details_item.dart';
 
-class MealsDetails extends StatelessWidget {
+class MealsDetailsScreen extends StatelessWidget {
   final Meal meal;
-  const MealsDetails({super.key, required this.meal});
+  const MealsDetailsScreen({super.key, required this.meal});
 
   void _handleAddFavourite(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -26,7 +26,6 @@ class MealsDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(meal.title, maxLines: 1),
-        titleSpacing: 4,
         actions: [
           IconButton(
             onPressed: () => _handleAddFavourite(context),
