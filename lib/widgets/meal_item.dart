@@ -5,8 +5,11 @@ import 'package:meals_app/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
+  final void Function(Meal meal) onToggleFavourite;
+
   final Meal meal;
-  const MealItem(this.meal, {super.key});
+
+  const MealItem(this.meal, {super.key, required this.onToggleFavourite});
 
   String _capitalizeFirstLetter(String letter) {
     return '${letter[0].toUpperCase()} ${letter.substring(1)}';
@@ -14,7 +17,12 @@ class MealItem extends StatelessWidget {
 
   void _handleSelectMeal(BuildContext context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (context) => MealsDetailsScreen(meal: meal)),
+      MaterialPageRoute(
+        builder: (context) => MealsDetailsScreen(
+          meal: meal,
+          onToggleFavourite: onToggleFavourite,
+        ),
+      ),
     );
   }
 

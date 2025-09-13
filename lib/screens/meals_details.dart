@@ -4,22 +4,12 @@ import 'package:meals_app/widgets/meals_details_item.dart';
 
 class MealsDetailsScreen extends StatelessWidget {
   final Meal meal;
-  const MealsDetailsScreen({super.key, required this.meal});
-
-  void _handleAddFavourite(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'Marked as favourite',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: const Color.fromARGB(255, 18, 17, 15),
-          ),
-        ),
-      ),
-    );
-  }
+  final void Function(Meal meal) onToggleFavourite;
+  const MealsDetailsScreen({
+    super.key,
+    required this.meal,
+    required this.onToggleFavourite,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +18,7 @@ class MealsDetailsScreen extends StatelessWidget {
         title: Text(meal.title, maxLines: 1),
         actions: [
           IconButton(
-            onPressed: () => _handleAddFavourite(context),
+            onPressed: () => onToggleFavourite(meal),
             icon: Icon(Icons.star),
           ),
         ],
