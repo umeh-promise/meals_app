@@ -8,15 +8,17 @@ import 'package:meals_app/widgets/category_item.dart';
 class Categories extends StatelessWidget {
   const Categories({super.key});
 
-  void _handleSelectCategory(
-    BuildContext context,
-    Category category,
-    List<Meal> meals,
-  ) {
+  void _handleSelectCategory(BuildContext context, Category category) {
     // Navigator.push(context, route)
+
+    final List<Meal> filteredMeals = dummyMeals
+        .where((meal) => meal.categories.contains(category.id))
+        .toList();
+
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => Meals(title: category.title, meals: meals),
+        builder: (context) =>
+            Meals(title: category.title, meals: filteredMeals),
       ),
     );
   }
@@ -38,7 +40,7 @@ class Categories extends StatelessWidget {
             CategoryItem(
               category: category,
               key: ValueKey(category.id),
-              onSelectCategory: _handleSelectCategory,
+              onSelectCategory: () => _handleSelectCategory(context, category),
             ),
         ],
       ),
