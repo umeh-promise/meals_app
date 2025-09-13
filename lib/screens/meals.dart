@@ -3,9 +3,9 @@ import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/widgets/meal_item.dart';
 
 class Meals extends StatelessWidget {
-  final String title;
+  final String? title;
   final List<Meal> meals;
-  const Meals({super.key, required this.title, required this.meals});
+  const Meals({super.key, this.title, required this.meals});
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +37,12 @@ class Meals extends StatelessWidget {
       );
     }
 
+    if (title == null) {
+      return content;
+    }
+
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: Text(title!)),
       body: content,
     );
   }
