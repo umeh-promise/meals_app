@@ -14,14 +14,17 @@ class MealsDetailsItem extends StatelessWidget {
       // mainAxisSize: MainAxisSize.min,
       // mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        FadeInImage(
-          placeholder: MemoryImage(kTransparentImage),
-          image: NetworkImage(meal.imageUrl),
-          fit: BoxFit.cover,
-          height: 250,
-          width: double.infinity,
-          color: const Color.fromARGB(77, 63, 49, 8),
-          colorBlendMode: BlendMode.multiply,
+        Hero(
+          tag: meal.id,
+          child: FadeInImage(
+            placeholder: MemoryImage(kTransparentImage),
+            image: NetworkImage(meal.imageUrl),
+            fit: BoxFit.cover,
+            height: 250,
+            width: double.infinity,
+            color: const Color.fromARGB(77, 63, 49, 8),
+            colorBlendMode: BlendMode.multiply,
+          ),
         ),
         const SizedBox(height: 25),
         MealsDetailsItemTrait(label: 'Ingredients', items: meal.ingredients),
